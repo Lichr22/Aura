@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Predicción - AURA</title>
+    <!-- Estilos compartidos -->
+    <link rel="stylesheet" href="../index/index.css">
+    <link rel="stylesheet" href="prediction.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="logo">
+                <a href="../../index.html">
+                    <picture>
+                        <source media="(max-width: 900px)" srcset="../../assets/img/logo_vertical.png">
+                        <img src="../../assets/img/logo_horizontal.png" alt="AURA Logo" class="aura-logo" style="max-width: 100%; height: auto;">
+                    </picture>
+                </a>
+            </div>
+            
+            <nav class="sidebar-menu">
+                <a href="../../index.html" class="menu-item">Mi Aura</a>
+                <a href="../symptoms/symptoms.html" class="menu-item">Síntomas</a>
+                <a href="../prediction/prediction.html" class="menu-item active">Predicción</a>
+                <a href="../aIAssistant/aiassistant.html" class="menu-item">Asistente IA</a>
+                <a href="../Team/team.html" class="menu-item">Quiénes Somos</a>
+            </nav>
+
+            <button class="btn-cerrar-sesión">Cerrar Sesión</button>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <header class="dashboard-header">
+                <h1 style="font-family: 'Cornella', serif;">Predicción de tu ciclo</h1>
+                <div class="user-profile">
+                    <div class="avatar" id="user-avatar" style="cursor: pointer;">
+                        <img src="https://ui-avatars.com/api/?name=User&background=83133F&color=fff" alt="Avatar">
+                    </div>
+                    <div id="profileDropdown" style="display: none; position: absolute; top: 65px; right: 0; background: white; border-radius: 12px; box-shadow: 0 8px 25px rgba(131, 19, 63, 0.15); width: 200px; padding: 0.5rem 0; z-index: 100; border: 1px solid rgba(0,0,0,0.05);">
+                        <a href="#" class="dropdown-item" style="display: block; padding: 0.8rem 1.5rem; color: #111827; text-decoration: none; font-weight: 600; transition: background 0.2s;">Avatar</a>
+                        <a href="#" class="dropdown-item" style="display: block; padding: 0.8rem 1.5rem; color: #111827; text-decoration: none; font-weight: 600; transition: background 0.2s;">Ajustes</a>
+                        <hr style="margin: 0.5rem 0; border: 0; border-top: 1px solid #f1f1f1;">
+                        <a href="#" id="dropdown-logout" class="dropdown-item" style="display: block; padding: 0.8rem 1.5rem; color: #B4295D; text-decoration: none; font-weight: 700; transition: background 0.2s;">Cerrar Sesión</a>
+                    </div>
+                </div>
+            </header>
+
+            <section class="top-row" style="grid-template-columns: 1fr; margin-top: 1rem;">
+                <article class="card prediction-card-aura">
+                    <div class="prediction-form">
+                        <!-- INPUT FECHA -->
+                        <div class="form-group">
+                            <label>Última fecha de menstruación</label>
+                            <input type="date" id="fecha" class="form-input">
+                        </div>
+
+                        <!-- INPUT CICLO -->
+                        <div class="form-group">
+                            <label>Duración del ciclo (días)</label>
+                            <input type="number" id="ciclo" placeholder="Ej: 28" class="form-input">
+                        </div>
+
+                        <!-- BOTÓN -->
+                        <button id="calcular" class="btn-primary" style="width: 100%;">Calcular Predicción</button>
+                    </div>
+
+                    <!-- RESULTADO -->
+                    <div class="resultado-aura" style="margin-top: 2.5rem; border-top: 1px solid rgba(131,19,63,0.1); padding-top: 2rem;">
+                        <div class="result-item">
+                            <p class="result-title">Próxima menstruación:</p>
+                            <p id="proxima" class="result-value">-</p>
+                        </div>
+
+                        <div class="result-item" style="margin-top: 1.5rem;">
+                            <p class="result-title">Ventana fértil:</p>
+                            <p id="fertil" class="result-value">-</p>
+                        </div>
+                    </div>
+                </article>
+            </section>
+        </main>
+
+        <!-- Footer -->
+        <footer class="footer" style="display: flex; justify-content: space-between; align-items: stretch; padding: 2rem 4rem;">
+             <!-- Columna Izquierda (Contactos) -->
+             <div class="footer-contacts" style="flex: 1; display: flex; flex-direction: column; justify-content: center; border-right: 1px solid rgba(255, 255, 255, 0.4); padding-right: 2rem; margin: 0; min-width: auto; height: auto;">
+                 <h4 style="margin-bottom: 0.8rem;">Contactos</h4>
+                 <p style="margin-bottom: 0.2rem;">Andres Espinosa Rojas</p>
+                 <p style="margin-bottom: 0.2rem;">Alirio Andres Piña</p>
+                 <p style="margin-bottom: 0.2rem;">Valentina Corredor</p>
+                 <p style="margin-bottom: 0.2rem;">Laura Taborda</p>
+                 <p style="margin-bottom: 0.2rem;">Juliana Patiño</p>
+             </div>
+
+             <!-- Columna Central (Logo) -->
+             <div class="footer-cesde" style="flex: 1; display: flex; justify-content: center; align-items: center; padding: 0 2rem; margin: 0;">
+                 <img src="../../assets/img/logo_cesde_blanco.png" alt="Logo CESDE" style="max-height: 90px; width: auto; opacity: 1;">
+             </div>
+
+             <!-- Columna Derecha (Horario) -->
+             <div class="footer-schedule" style="flex: 1; display: flex; flex-direction: column; justify-content: center; text-align: right; border-left: 1px solid rgba(255, 255, 255, 0.4); padding-left: 2rem; margin: 0;">
+                  <h3 style="margin-bottom: 0.5rem; font-family: 'Cornella', serif; font-size: 2rem; letter-spacing: 2px;">CESDE</h3>
+                  <p style="font-weight: 700; font-size: 1.1rem; margin-bottom: 0.2rem;">Sábado</p>
+                  <p style="opacity: 0.9;">7:30 a 6:00 pm</p>
+             </div>
+        </footer>
+    </div>
+
+    <script type="module" src="../../scripts/GlobalUI.js"></script>
+    <script type="module" src="prediction.js"></script>
+</body>
+</html>

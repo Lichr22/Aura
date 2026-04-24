@@ -1,0 +1,380 @@
+:root {
+    /* Paleta de colores vibrante y moderna */
+    --primary-color: #83133F; /* Indigo */
+    --primary-hover: #83133F;
+    --text-dark: #111827;
+    --text-muted: #250d0d;
+    --bg-light: #F9E4F0; /* Fondo claro general */
+    --white: #F9E4F0;
+    --border-color: #83133F;
+    --left-panel-gradient-start: #8313401f;
+    --left-panel-gradient-end: #a41aa854;
+}
+
+
+@font-face {
+    font-family: 'Cornella';
+    src: url(./fonts/cornella/cornella-Regular.otf);
+}
+
+@font-face {
+    font-family: 'Nunito';
+    src: url(./fonts/Nunito/static/Nunito-Regular.ttf);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Nunito', sans-serif;
+    font-weight: 500;
+}
+
+
+
+body {
+    background-color: var(--bg-light);
+    height: 100vh;
+    overflow: hidden; /* Evita el scroll global */
+    color: var(--text-dark);
+}
+
+.split-container {
+    display: flex;
+    height: 100vh;
+    width: 100vw;
+}
+
+/* ============================
+   PANEL IZQUIERDO (55%)
+============================ */
+.left-panel {
+    flex: 0 0 55%; /* 55% del ancho */
+    position: relative;
+    background-image: url(../../assets/img/logo_login2.png);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    display: flex;
+    flex-direction: column;    
+    padding: 5%;
+    color: var(--white);
+    
+}
+
+/* Capa de superposición para color y transparencia */
+.left-panel .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    /* Degradado superpuesto sobre la imagen (fondo con color + transparencia) */
+    background: linear-gradient(135deg, var(--left-panel-gradient-start) 0%, var(--left-panel-gradient-end) 100%);
+    z-index: 1;
+}
+
+.left-panel .content {
+    position: relative;
+    z-index: 2; /* Para estar encima del overlay */
+    max-width: 650px;
+    animation: fadeIn 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.left-panel h1 {
+    font-size: 3rem;
+    font-weight: 300;
+    margin-bottom: 1.5rem;
+    line-height: 1.1;
+    letter-spacing: -1px;
+    font-family: 'Cornella';
+}
+
+.left-panel p {
+    font-size: 1rem;
+    line-height: 1.7;
+    opacity: 0.9;
+    font-weight: 300;
+    text-shadow: #250d0d 3px 3px 3px;
+}
+
+/* ============================
+   PANEL DERECHO (45%)
+============================ */
+.right-panel {
+    flex: 1; /* El resto del espacio (45% o menos en pantallas pequeñas) */
+    background-color: var(--bg-light); /* Fondo de color claro estilizado */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 3rem;
+    /* Sombra profunda para destacar la separación de paneles en la transición */
+    box-shadow: -15px 0 35px rgba(0, 0, 0, 0.1); 
+    z-index: 5;
+    position: relative;
+}
+
+/* Cubierta para el contenedor del login (una tarjeta limpia y clara) */
+.login-wrapper {
+    width: 100%;
+    max-width: 420px;
+    background-color: var(--white);
+    padding: 3rem;
+    border-radius: 20px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.04);
+    animation: slideUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.login-header {
+    margin-bottom: 2.5rem;
+    text-align: center;
+}
+
+.login-header h2 {
+    font-size: 2.8rem;
+    font-weight: 300;
+    margin-bottom: 2rem;
+    letter-spacing: -0.5px;
+    line-height: 0.9;
+    font-family: 'Cornella';
+    
+}
+
+.login-header p {
+    color: var(--text-muted);
+    font-size: 1rem;
+}
+
+/* Formulario y Controles */
+.login-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.input-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+}
+
+.input-group label {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--text-dark);
+}
+
+.input-group input {
+    padding: 0.95rem 1.2rem;
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    font-size: 1rem;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    background-color: #fcfcfd;
+}
+
+.input-group input:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.15);
+    
+}
+
+.input-group input::placeholder {
+    color: #a1a1aa;
+}
+
+/* Enlaces y Checkbox extras */
+.form-actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.9rem;
+}
+
+.remember-me {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--text-muted);
+    cursor: pointer;
+    font-weight: 500;
+}
+
+.remember-me input[type="checkbox"] {
+    width: 1rem;
+    height: 1rem;
+    accent-color: var(--primary-color);
+    cursor: pointer;
+}
+
+.forgot-password {
+    color: var(--primary-color);
+    font-weight: 600;
+    text-decoration: none;
+    transition: color 0.3s;
+    margin-left:    50px;
+}
+
+.forgot-password:hover {
+    color: var(--primary-hover);
+    text-decoration: underline;
+}
+
+/* Botón de envío */
+.boton {
+    position: relative;
+    font-size: 1.3rem;
+    padding: 0.75rem 2rem;
+    font-weight: 50;
+    border: none;
+    cursor: pointer;
+    transition: all 250ms;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    width: 100%;
+    justify-content: center;
+}
+.boton i {
+    width: 1.75rem;
+    height: 1.75rem;
+}
+.boton-candy {
+    background: linear-gradient(to bottom right, rgb(216 48 116), rgb(130 19 63));
+    color: white;
+    border-radius:15px;
+    box-shadow:
+    inset 0 1px 0 0 rgba(255,255,255,0.4),
+    0 2px 0 0 #ff42a4,
+    0 4px 0 0 #ff006e,
+    0 6px 0 0 #fd1849,
+    0 8px 0 0 #bd1f4c,
+    0 8px 16px 0 rgba(255, 139, 199, 0.5);
+}
+.boton-candy:hover {
+    transform: translateY(4px);
+    box-shadow:
+    inset 0 1px 0 0 rgba(255,255,255,0.4),
+    0 1px 0 0 #f472b6,
+    0 2px 0 0 #f43f5e,
+    0 3px 0 0 #ac2643,
+    0 4px 0 0 #791b42,
+    0 4px 8px 0 rgba(244,114,182,0.5);
+}
+.boton-candy:hover i {
+    animation: pulse 1s infinite;
+}
+
+/* Botones Sociales */
+.social-login-separator {
+    display: flex;
+    align-items: center;
+    text-align: center;
+    margin: 1rem 0 0.5rem;
+    color: var(--text-muted);
+    font-size: 0.9rem;
+}
+
+.social-login-separator::before,
+.social-login-separator::after {
+    content: '';
+    flex: 1;
+    border-bottom: 1px solid var(--border-color);
+    opacity: 0.5;
+}
+
+.social-login-separator span {
+    padding: 0 10px;
+}
+
+.social-login-buttons {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 0.5rem;
+}
+
+.social-btn {
+    flex: 1;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.75rem;
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    background-color: transparent;
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--text-dark);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.social-btn:hover {
+    background-color: var(--white);
+    border-color: var(--primary-color);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(131, 19, 63, 0.15); /* Sombra basada en --primary-color */
+}
+
+.social-btn img, .social-btn svg {
+    width: 20px;
+    height: 20px;
+}
+
+/* ============================
+   ANIMACIONES
+============================ */
+@keyframes fadeIn {
+    0% { opacity: 0; transform: translateY(20px); }
+    100% { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slideUp {
+    0% { opacity: 0; transform: translateY(40px); }
+    100% { opacity: 1; transform: translateY(0); }
+}
+
+/* ============================
+   RESPONSIVIDAD
+============================ */
+@media (max-width: 992px) {
+    .split-container {
+        flex-direction: column;
+        overflow-y: auto;
+    }
+    
+    body {
+        overflow-y: auto;
+    }
+    
+    .left-panel {
+        flex: none;
+        min-height: 40vh;
+        padding: 3rem 2rem;
+    }
+    
+    .left-panel h1 {
+        font-size: 2.5rem;
+        margin-bottom: 1rem;
+    }
+    
+    .left-panel p {
+        font-size: 1rem;
+    }
+    
+    .right-panel {
+        flex: none;
+        min-height: 60vh;
+        border-radius: 30px 30px 0 0;
+        margin-top: -30px; /* Superposición para diseño dinámico en móvil */
+        padding: 2rem 1.5rem;
+        box-shadow: 0 -10px 40px rgba(0, 0, 0, 0.1);
+    }
+    
+    .login-wrapper {
+        padding: 2rem;
+        box-shadow: none; /* Quitamos sombra extra en móvil */
+    }
+}

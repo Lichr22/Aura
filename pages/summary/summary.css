@@ -1,0 +1,233 @@
+/* No necesitamos redefinir variables globales si ya importamos index.css en el HTML, 
+   pero podemos agregar específicas del módulo o sobreescribir si es necesario */
+
+.card-resumen-detalle {
+    display: flex;
+    align-items: center;
+    gap: 3rem;
+    padding: 3rem;
+}
+
+.cycle-wrapper-summary {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+}
+
+.cycle-progress {
+    position: relative;
+    width: 180px;
+    height: 180px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.cycle-progress .bg-ring {
+    fill: none;
+    stroke: rgba(255, 255, 255, 0.4);
+    stroke-width: 10;
+}
+
+.cycle-progress .progress-ring-summary {
+    fill: none;
+    stroke: var(--button-bg);
+    stroke-width: 10;
+    stroke-linecap: round;
+    stroke-dasharray: 502; /* Perímetro de r=80 */
+    stroke-dashoffset: 300; /* Valor de ejemplo, se ajustará por JS */
+    transition: stroke-dashoffset 1s ease-out;
+}
+
+.cycle-content .number {
+    font-size: 5rem;
+    font-family: 'Cornella', serif;
+    color: var(--primary-color);
+    line-height: 1;
+}
+
+.label-day {
+    font-weight: 700;
+    font-size: 1.1rem;
+    color: var(--primary-color);
+}
+
+.resumen-info {
+    flex: 1;
+}
+
+.phase-badge {
+    background-color: var(--primary-color);
+    color: white;
+    padding: 0.4rem 1rem;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    display: inline-block;
+}
+
+.resumen-info h2 {
+    font-family: 'Cornella', serif;
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    color: var(--text-dark);
+}
+
+.resumen-info p {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    font-weight: 600;
+    opacity: 0.8;
+    margin-bottom: 2rem;
+}
+
+/* Predicciones */
+.prediction-card-summary {
+    padding: 2.5rem;
+}
+
+.prediction-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.prediction-item {
+    display: flex;
+    align-items: center;
+    gap: 1.2rem;
+}
+
+.icon-circle-small {
+    width: 50px;
+    height: 50px;
+    background-color: var(--primary-color);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    color: white;
+}
+
+.pred-text p {
+    font-size: 0.9rem;
+    font-weight: 600;
+    opacity: 0.7;
+}
+
+.pred-text strong {
+    font-size: 1.2rem;
+    color: var(--primary-color);
+}
+
+.disclaimer {
+    margin-top: 2rem;
+    font-size: 0.85rem;
+    font-style: italic;
+    opacity: 0.6;
+    font-weight: 600;
+}
+
+/* Emociones */
+.emotions-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 1.2rem;
+}
+
+.emotion-card {
+    background-color: var(--card-bg);
+    border-radius: 20px;
+    padding: 1.5rem;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: 2px solid transparent;
+}
+
+.emotion-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow);
+}
+
+.emotion-card.selected {
+    background-color: var(--white);
+    border-color: var(--primary-color);
+    box-shadow: var(--shadow);
+}
+
+.emo-icon {
+    font-size: 2.5rem;
+    display: block;
+    margin-bottom: 0.5rem;
+}
+
+.emo-name {
+    font-weight: 700;
+    font-size: 1rem;
+    color: var(--text-dark);
+}
+
+/* Recomendación */
+.recommendation-banner-aura {
+    background: linear-gradient(135deg, var(--primary-color), var(--primary-light));
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 2.5rem 4rem;
+    border-radius: 30px;
+}
+
+.tag-recommendation {
+    background-color: rgba(255, 255, 255, 0.2);
+    padding: 0.4rem 1rem;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    display: inline-block;
+}
+
+.banner-content h4 {
+    font-family: 'Cornella', serif;
+    font-size: 2.2rem;
+    margin-bottom: 0.8rem;
+}
+
+.banner-content p {
+    font-size: 1.1rem;
+    opacity: 0.9;
+    max-width: 600px;
+}
+
+.banner-icon-aura {
+    font-size: 5rem;
+    opacity: 0.8;
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+    .card-resumen-detalle {
+        flex-direction: column;
+        text-align: center;
+        padding: 2rem;
+    }
+    
+    .emotions-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+    
+    .recommendation-banner-aura {
+        flex-direction: column;
+        text-align: center;
+        padding: 2rem;
+    }
+    
+    .banner-icon-aura {
+        display: none;
+    }
+}
