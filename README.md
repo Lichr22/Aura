@@ -1,4 +1,4 @@
-<img width="368" height="716" alt="{2D4C3279-B4E0-4FDC-A2F6-DC7E879404B6}" src="https://github.com/user-attachments/assets/39644f90-444f-487d-ab16-51a300075864" /># Aura 
+# Aura 🌸
 
 AURA es una aplicación web progresiva diseñada para el monitoreo inteligente del ciclo menstrual, que combina una interfaz de usuario intuitiva con capacidades avanzadas de asistencia personalizada. El objetivo principal de la aplicación es transformar el registro de datos biológicos en información accionable para el bienestar integral de la usuaria.
 
