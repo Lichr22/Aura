@@ -12,12 +12,12 @@
 
 @font-face {
 font-family: 'Cornella';
-src: url(./fonts/cornella/cornella-Regular.otf);
+src: url(../../assets/fonts/cornella/cornella-Regular.otf);
 }
 
 @font-face {
 font-family: 'Nunito';
-src: url(./fonts/nunito/Nunito-VariableFont_wght.ttf);
+src: url(../../assets/fonts/Nunito/Nunito-VariableFont_wght.ttf);
 }
 
 * {
@@ -300,7 +300,6 @@ body {
     text-align: center;
     padding: 2rem 1.8rem;
     min-height: 320px;
-    cursor: pointer;
 }
 
 .ai-avatar {
@@ -339,6 +338,13 @@ body {
     font-size: 1rem;
     font-weight: 700;
     width: 100%;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+.btn-ai:hover {
+    background-color: var(--primary-color);
+    transform: translateY(-2px);
 }
 
 .action-row {

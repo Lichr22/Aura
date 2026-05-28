@@ -1,10 +1,11 @@
-import { User } from '../../models/User.js';
-import { FlowLog } from '../../models/FlowLog.js';
-import { SexualActivity } from '../../models/SexualActivity.js';
+import { AuthService } from '../../src/services/AuthService.js';
+import { UserRepository } from '../../src/repositories/UserRepository.js';
+import { FlowLog } from '../../src/models/FlowLog.js';
+import { SexualActivity } from '../../src/models/SexualActivity.js';
 
 document.addEventListener('DOMContentLoaded', () => {
     // La sesión y el header ahora son manejados por GlobalUI.js
-    const sesion = User.getCurrentUser();
+    const sesion = AuthService.getCurrentUser();
 
     const pills = document.querySelectorAll('.pill');
     const intensityBtns = document.querySelectorAll('.circle-btn');
@@ -64,7 +65,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const newSex = new SexualActivity(Date.now() + 2, new Date(), hasProtection, hasOrgasm);
             sesion.sexualActivities.push(newSex);
 
-            User.saveToLocalStorage(sesion);
+            UserRepository.save(sesion);
 
             alert(`¡Registro diario guardado con éxito! Se registraron síntomas, flujo y actividad.`);
 

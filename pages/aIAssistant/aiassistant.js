@@ -1,8 +1,8 @@
 /* ═══════════════════════════════════════
    STATE
 ═══════════════════════════════════════ */
-import { User } from '../../models/User.js';
-import { Cycle } from '../../models/Cycle.js';
+import { AuthService } from '../../src/services/AuthService.js';
+import { Cycle } from '../../src/models/Cycle.js';
 
 let userName = 'Usuario';
 let cycleDay = 12;
@@ -22,7 +22,7 @@ function getPhase(day) {
    INIT Y AUTENTICACIÓN
 ═══════════════════════════════════════ */
 document.addEventListener('DOMContentLoaded', () => {
-    const sesion = User.getCurrentUser();
+    const sesion = AuthService.getCurrentUser();
     if (!sesion) return;
     
     userName = sesion.name || 'Usuario';

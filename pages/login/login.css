@@ -14,12 +14,12 @@
 
 @font-face {
     font-family: 'Cornella';
-    src: url(./fonts/cornella/cornella-Regular.otf);
+    src: url(../../assets/fonts/cornella/cornella-Regular.otf);
 }
 
 @font-face {
     font-family: 'Nunito';
-    src: url(./fonts/Nunito/static/Nunito-Regular.ttf);
+    src: url(../../assets/fonts/Nunito/static/Nunito-Regular.ttf);
 }
 
 * {

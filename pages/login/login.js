@@ -1,4 +1,5 @@
-import { User } from '../../models/User.js';
+import { AuthService } from '../../src/services/AuthService.js';
+import { UserRepository } from '../../src/repositories/UserRepository.js';
 
 document.addEventListener('DOMContentLoaded', () => {
     const form = document.querySelector('.login-form');
@@ -27,7 +28,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const attemptsInfo = document.getElementById('attempts-info');
 
         // Buscar el usuario mediante el Modelo User
-        const user = User.findByEmail(email);
+        const user = UserRepository.findByEmail(email);
 
         if (!user) {
             if(emailError) {
@@ -46,6 +47,7 @@ document.addEventListener('DOMContentLoaded', () => {
         // 1. Verificar si la contraseña coincide
         if (user.password !== password) {
             user.recordFailedAttempt();
+            UserRepository.save(user);
             const remaining = 3 - user.loginAttempts;
             
             if (user.status === 'blocked') {
@@ -69,6 +71,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // Reiniciar intentos tras éxito
         user.resetAttempts();
+        UserRepository.save(user);
 
         // --- Lógica de Recuérdame ---
         if (rememberCheckbox && rememberCheckbox.checked) {
@@ -78,7 +81,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         // GUARDAR SESIÓN (Persistencia en el Modelo)
-        User.login(user.id);
+        AuthService.login(user.id);
 
         alert(`Bienvenid@ de nuevo, ${user.name}`);
 

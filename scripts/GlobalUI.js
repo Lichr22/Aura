@@ -1,4 +1,6 @@
-import { User } from '../models/User.js';
+import { AuthService } from '../src/services/AuthService.js';
+import { UserRepository } from '../src/repositories/UserRepository.js';
+import { LocalStorageService } from '../src/services/LocalStorageService.js';
 
 /**
  * GlobalUI.js
@@ -9,7 +11,7 @@ import { User } from '../models/User.js';
  * - Cierre de sesión
  */
 document.addEventListener('DOMContentLoaded', () => {
-    const user = User.getCurrentUser();
+    const user = AuthService.getCurrentUser();
     
     // 1. Redirigir si no hay sesión (excepto en login/registro)
     const isAuthPage = window.location.pathname.includes('login.html') || window.location.pathname.includes('register.html');
@@ -67,7 +69,7 @@ function initGlobalUI(user) {
     logoutBtns.forEach(btn => {
         btn.addEventListener('click', (e) => {
             e.preventDefault();
-            User.logout();
+            AuthService.logout();
             const prefix = window.location.pathname.includes('/pages/') ? '../../' : '';
             window.location.href = `${prefix}pages/login/login.html`;
         });
@@ -192,7 +194,7 @@ function setupModalLogic(user, modal) {
                         age: newAge,
                         averageCycleDuration: newCycleLen
                     });
-                    User.saveToLocalStorage(user);
+                    UserRepository.save(user);
                     updated = true;
                 }
             }
@@ -212,6 +214,7 @@ function setupModalLogic(user, modal) {
             }
             
             if (updated) {
+                UserRepository.save(user);
                 alert('Información actualizada correctamente.');
                 location.reload();
             }
@@ -222,11 +225,8 @@ function setupModalLogic(user, modal) {
     if (deleteBtn) {
         deleteBtn.onclick = () => {
             if (confirm('¿Estás seguro de que deseas eliminar tu cuenta? Esta acción es irreversible.')) {
-                const directory = JSON.parse(localStorage.getItem('usersDirectory')) || [];
-                const updatedDir = directory.filter(id => id !== user.id);
-                localStorage.setItem('usersDirectory', JSON.stringify(updatedDir));
-                localStorage.removeItem(`user_${user.id}`);
-                localStorage.removeItem('currentUser');
+                UserRepository.delete(user.id);
+                AuthService.logout();
                 alert('Cuenta eliminada correctamente.');
                 const prefix = window.location.pathname.includes('/pages/') ? '../../' : '';
                 window.location.href = `${prefix}pages/login/login.html`;

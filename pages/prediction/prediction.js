@@ -1,4 +1,5 @@
-import { User } from '../../models/User.js';
+import { AuthService } from '../../src/services/AuthService.js';
+import { UserRepository } from '../../src/repositories/UserRepository.js';
 
 document.addEventListener('DOMContentLoaded', () => {
     // La sesión y el header ahora son manejados por GlobalUI.js
@@ -13,7 +14,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const opcionesFecha = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
 
     // Cargar duración del ciclo desde el Perfil Menstrual
-    const user = User.getCurrentUser();
+    const user = AuthService.getCurrentUser();
     if (user && user.menstrualProfile && inputCiclo) {
         inputCiclo.value = user.menstrualProfile.averageCycleDuration || 28;
     }
@@ -47,7 +48,7 @@ document.addEventListener('DOMContentLoaded', () => {
             displayFertil.textContent = `${inicioFertil.toLocaleDateString('es-ES', formatoCorto)} - ${finFertil.toLocaleDateString('es-ES', formatoCorto)}`;
 
             // Guardar automáticamente el ciclo en el perfil del usuario
-            const sesion = User.getCurrentUser();
+            const sesion = AuthService.getCurrentUser();
             if (sesion) {
                 sesion.addCycle({
                     id: Date.now(),
@@ -56,7 +57,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     averageDuration: cicloValor,
                     periodDuration: 5 // Valor por defecto
                 });
-                User.saveToLocalStorage(sesion);
+                UserRepository.save(sesion);
                 console.log('Ciclo guardado en el perfil');
             }
         });

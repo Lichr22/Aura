@@ -1,9 +1,9 @@
-import { User } from '../../models/User.js';
-import { CycleAnalysis } from '../../models/CycleAnalysis.js';
-import { HealthAnalysis } from '../../models/HealthAnalysis.js';
+import { AuthService } from '../../src/services/AuthService.js';
+import { CycleAnalysis } from '../../src/analysis/CycleAnalysis.js';
+import { HealthAnalysis } from '../../src/analysis/HealthAnalysis.js';
 
 document.addEventListener('DOMContentLoaded', () => {
-    const user = User.getCurrentUser();
+    const user = AuthService.getCurrentUser();
     if (!user) return;
 
     // 1. Lógica del Ciclo (Resumen visual)

@@ -1,4 +1,5 @@
-import { User } from '../../models/User.js';
+import { User } from '../../src/models/User.js';
+import { AuthService } from '../../src/services/AuthService.js';
 
 document.addEventListener('DOMContentLoaded', () => {
     const form = document.querySelector('.register-form');
@@ -54,7 +55,7 @@ document.addEventListener('DOMContentLoaded', () => {
         );
 
         // 2. Registrar en LocalStorage mediante User.js
-        const success = User.registerUser(newUser);
+        const success = AuthService.register(newUser);
 
         if (!success) {
             alert('El correo electrónico ya está registrado.');

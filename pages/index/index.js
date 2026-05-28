@@ -1,4 +1,4 @@
-import { User } from '../../models/User.js';
+import { AuthService } from '../../src/services/AuthService.js';
 
 document.addEventListener('DOMContentLoaded', () => {
     // 1. Elementos del DOM
@@ -6,7 +6,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const ringElement = document.querySelector('.progress-ring');
     
     // 2. Extraer usuario de la sesión actual
-    const sesion = User.getCurrentUser();
+    const sesion = AuthService.getCurrentUser();
     let currentDay = 1; // Default
     let totalCycleDays = 28;
 
