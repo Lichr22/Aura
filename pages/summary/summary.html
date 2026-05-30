@@ -4,12 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Resumen del Ciclo - AURA</title>
-    <!-- Estilos compartidos del index para mantener consistencia -->
     <link rel="stylesheet" href="../index/index.css">
     <link rel="stylesheet" href="summary.css">
 </head>
 <body>
     <div class="app-container">
+
         <!-- Sidebar -->
         <aside class="sidebar">
             <div class="logo">
@@ -20,7 +20,6 @@
                     </picture>
                 </a>
             </div>
-            
             <nav class="sidebar-menu">
                 <a href="../../index.html" class="menu-item">Mi Aura</a>
                 <a href="../symptoms/symptoms.html" class="menu-item">Síntomas</a>
@@ -28,12 +27,16 @@
                 <a href="../aIAssistant/aiassistant.html" class="menu-item">Asistente IA</a>
                 <a href="../Team/team.html" class="menu-item">Quiénes Somos</a>
             </nav>
-
             <button class="btn-cerrar-sesión">Cerrar Sesión</button>
         </aside>
 
         <!-- Main Content -->
         <main class="main-content">
+
+            <!-- Banner de cambio de fase (se llena desde summary.js) -->
+            <div id="phase-change-banner"></div>
+
+            <!-- Header -->
             <header class="dashboard-header">
                 <h1 style="font-family: 'Cornella', serif;">Resumen del ciclo</h1>
                 <div class="user-profile">
@@ -49,6 +52,7 @@
                 </div>
             </header>
 
+            <!-- Anillo de ciclo + Predicciones -->
             <section class="top-row">
                 <article class="card card-resumen-detalle">
                     <div class="cycle-wrapper-summary">
@@ -102,6 +106,7 @@
                 </article>
             </section>
 
+            <!-- Estado de Ánimo -->
             <section class="emotions-section">
                 <h3 style="font-family: 'Cornella', serif; font-size: 2rem; margin-bottom: 0.5rem;">Estado de Ánimo</h3>
                 <p style="font-weight: 600; opacity: 0.7; margin-bottom: 1.5rem;">¿Cómo resuena tu energía hoy?</p>
@@ -139,6 +144,7 @@
                 </div>
             </section>
 
+            <!-- Recomendaciones -->
             <section class="recommendation-row" style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem;">
                 <div class="card recommendation-banner-aura">
                     <div class="banner-content">
@@ -150,7 +156,6 @@
                         <svg width="50" height="50" viewBox="0 0 24 24" fill="none" stroke="#83133F" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5z"></path><path d="M2 17l10 5 10-5"></path><path d="M2 12l10 5 10-5"></path></svg>
                     </div>
                 </div>
-
                 <div class="card recommendation-banner-aura" style="background: white; border: 2px solid #F9E4F0;">
                     <div class="banner-content">
                         <span class="tag-recommendation" style="background: #83133F; color: white;">EJERCICIO RECOMENDADO</span>
@@ -163,54 +168,57 @@
                 </div>
             </section>
 
-            <!-- Sección de Análisis IA (Demostración de Polimorfismo) -->
+            <!-- Reporte de Análisis IA -->
             <section class="analysis-row" style="margin-bottom: 2.5rem;">
                 <h3 style="font-family: 'Cornella', serif; font-size: 1.8rem; margin-bottom: 1.5rem; color: #333;">Reporte de Análisis IA</h3>
                 <div id="analysis-container" style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem;">
-                    <!-- Los análisis se cargarán dinámicamente -->
                     <div class="card" style="padding: 1.5rem; display: flex; align-items: center; justify-content: center; opacity: 0.6;">
                         <p>Analizando tus datos actuales...</p>
                     </div>
                 </div>
             </section>
 
-            <!-- Sección de Historial (Requisito 5.3) -->
+            <!-- Análisis de síntomas (SymptomChart) — debajo del Reporte IA -->
+            <section class="card symptom-chart-section">
+                <h3 style="font-family: 'Cornella', serif; font-size: 1.8rem; margin-bottom: 1.5rem; color: #333;">Análisis de síntomas</h3>
+                <div id="aura-chart-root"></div>
+            </section>
+
+            <!-- Historial de Registros -->
             <section class="history-section" style="margin-top: 2rem;">
                 <h3 style="font-family: 'Cornella', serif; font-size: 2rem; margin-bottom: 1rem;">Historial de Registros</h3>
                 <div id="unified-history-list" class="history-list">
-                    <!-- Los registros se cargarán dinámicamente aquí -->
                     <p style="opacity: 0.6;">Cargando historial...</p>
                 </div>
             </section>
+
         </main>
 
         <!-- Footer -->
         <footer class="footer" style="display: flex; justify-content: space-between; align-items: stretch; padding: 2rem 4rem;">
-             <!-- Columna Izquierda (Contactos) -->
-             <div class="footer-contacts" style="flex: 1; display: flex; flex-direction: column; justify-content: center; border-right: 1px solid rgba(255, 255, 255, 0.4); padding-right: 2rem; margin: 0; min-width: auto; height: auto;">
-                 <h4 style="margin-bottom: 0.8rem;">Contactos</h4>
-                 <p style="margin-bottom: 0.2rem;">Andres Espinosa Rojas</p>
-                 <p style="margin-bottom: 0.2rem;">Alirio Andres Piña</p>
-                 <p style="margin-bottom: 0.2rem;">Valentina Corredor</p>
-                 <p style="margin-bottom: 0.2rem;">Laura Taborda</p>
-                 <p style="margin-bottom: 0.2rem;">Juliana Patiño</p>
-             </div>
-
-             <!-- Columna Central (Logo) -->
-             <div class="footer-cesde" style="flex: 1; display: flex; justify-content: center; align-items: center; padding: 0 2rem; margin: 0;">
-                 <img src="../../assets/img/logo_cesde_blanco.png" alt="Logo CESDE" style="max-height: 90px; width: auto; opacity: 1;">
-             </div>
-
-             <!-- Columna Derecha (Horario) -->
-             <div class="footer-schedule" style="flex: 1; display: flex; flex-direction: column; justify-content: center; text-align: right; border-left: 1px solid rgba(255, 255, 255, 0.4); padding-left: 2rem; margin: 0;">
-                  <h3 style="margin-bottom: 0.5rem; font-family: 'Cornella', serif; font-size: 2rem; letter-spacing: 2px;">CESDE</h3>
-                  <p style="font-weight: 700; font-size: 1.1rem; margin-bottom: 0.2rem;">Sábado</p>
-                  <p style="opacity: 0.9;">7:30 a 6:00 pm</p>
-             </div>
+            <div class="footer-contacts" style="flex: 1; display: flex; flex-direction: column; justify-content: center; border-right: 1px solid rgba(255, 255, 255, 0.4); padding-right: 2rem; margin: 0; min-width: auto; height: auto;">
+                <h4 style="margin-bottom: 0.8rem;">Contactos</h4>
+                <p style="margin-bottom: 0.2rem;">Andres Espinosa Rojas</p>
+                <p style="margin-bottom: 0.2rem;">Alirio Andres Piña</p>
+                <p style="margin-bottom: 0.2rem;">Valentina Corredor</p>
+                <p style="margin-bottom: 0.2rem;">Laura Taborda</p>
+                <p style="margin-bottom: 0.2rem;">Juliana Patiño</p>
+            </div>
+            <div class="footer-cesde" style="flex: 1; display: flex; justify-content: center; align-items: center; padding: 0 2rem; margin: 0;">
+                <img src="../../assets/img/logo_cesde_blanco.png" alt="Logo CESDE" style="max-height: 90px; width: auto; opacity: 1;">
+            </div>
+            <div class="footer-schedule" style="flex: 1; display: flex; flex-direction: column; justify-content: center; text-align: right; border-left: 1px solid rgba(255, 255, 255, 0.4); padding-left: 2rem; margin: 0;">
+                <h3 style="margin-bottom: 0.5rem; font-family: 'Cornella', serif; font-size: 2rem; letter-spacing: 2px;">CESDE</h3>
+                <p style="font-weight: 700; font-size: 1.1rem; margin-bottom: 0.2rem;">Sábado</p>
+                <p style="opacity: 0.9;">7:30 a 6:00 pm</p>
+            </div>
         </footer>
+
     </div>
 
     <script type="module" src="../../scripts/GlobalUI.js"></script>
     <script type="module" src="summary.js"></script>
+    <!-- SymptomChart: módulo independiente, se auto-monta en #aura-chart-root -->
+    <script type="module" src="../../src/services/SymptomChart.js"></script>
 </body>
 </html>

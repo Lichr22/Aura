@@ -1,6 +1,7 @@
 import { AuthService } from '../src/services/AuthService.js';
 import { UserRepository } from '../src/repositories/UserRepository.js';
 import { LocalStorageService } from '../src/services/LocalStorageService.js';
+import { AuraStore } from '../src/services/AuraStore.js';
 
 /**
  * GlobalUI.js
@@ -194,7 +195,7 @@ function setupModalLogic(user, modal) {
                         age: newAge,
                         averageCycleDuration: newCycleLen
                     });
-                    UserRepository.save(user);
+                    AuraStore.dispatch('updateUser', user);
                     updated = true;
                 }
             }
@@ -214,7 +215,7 @@ function setupModalLogic(user, modal) {
             }
             
             if (updated) {
-                UserRepository.save(user);
+                AuraStore.dispatch('updateUser', user);
                 alert('Información actualizada correctamente.');
                 location.reload();
             }
@@ -225,8 +226,7 @@ function setupModalLogic(user, modal) {
     if (deleteBtn) {
         deleteBtn.onclick = () => {
             if (confirm('¿Estás seguro de que deseas eliminar tu cuenta? Esta acción es irreversible.')) {
-                UserRepository.delete(user.id);
-                AuthService.logout();
+                AuraStore.dispatch('deleteUser', user.id);
                 alert('Cuenta eliminada correctamente.');
                 const prefix = window.location.pathname.includes('/pages/') ? '../../' : '';
                 window.location.href = `${prefix}pages/login/login.html`;

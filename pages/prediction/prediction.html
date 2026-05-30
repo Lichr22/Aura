@@ -7,6 +7,8 @@
     <!-- Estilos compartidos -->
     <link rel="stylesheet" href="../index/index.css">
     <link rel="stylesheet" href="prediction.css">
+    <!-- Flatpickr para un calendario moderno -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
 </head>
 <body>
     <div class="app-container">
@@ -52,20 +54,28 @@
             <section class="top-row" style="grid-template-columns: 1fr; margin-top: 1rem;">
                 <article class="card prediction-card-aura">
                     <div class="prediction-form">
-                        <!-- INPUT FECHA -->
-                        <div class="form-group">
-                            <label>Última fecha de menstruación</label>
-                            <input type="date" id="fecha" class="form-input">
+                        <div id="cycles-container" style="display: flex; flex-direction: column; gap: 1.5rem;">
+                            <!-- Ciclo Inicial -->
+                            <div class="cycle-entry">
+                                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
+                                    <h4 style="color: var(--primary-color); margin: 0; font-family: 'Nunito', sans-serif;">Ciclo Reciente</h4>
+                                </div>
+                                <div class="form-group" style="margin-bottom: 0.5rem;">
+                                    <label>Última fecha de menstruación</label>
+                                    <input type="date" class="form-input cycle-date">
+                                </div>
+                                <div class="form-group">
+                                    <label>Duración del ciclo (días)</label>
+                                    <input type="number" placeholder="Ej: 28" class="form-input cycle-duration">
+                                </div>
+                            </div>
                         </div>
 
-                        <!-- INPUT CICLO -->
-                        <div class="form-group">
-                            <label>Duración del ciclo (días)</label>
-                            <input type="number" id="ciclo" placeholder="Ej: 28" class="form-input">
-                        </div>
+                        <!-- BOTÓN AÑADIR -->
+                        <button id="add-cycle" class="btn-secondary" style="width: 100%;">+ Añadir otro ciclo anterior</button>
 
                         <!-- BOTÓN -->
-                        <button id="calcular" class="btn-primary" style="width: 100%;">Calcular Predicción</button>
+                        <button id="calcular" class="btn-primary" style="width: 100%;">Calcular Predicción Exacta</button>
                     </div>
 
                     <!-- RESULTADO -->
@@ -110,6 +120,10 @@
         </footer>
     </div>
 
+    <!-- Scripts de Flatpickr -->
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+    <script src="https://npmcdn.com/flatpickr/dist/l10n/es.js"></script>
+    
     <script type="module" src="../../scripts/GlobalUI.js"></script>
     <script type="module" src="prediction.js"></script>
 </body>
