@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AURA – Agente de IA</title>
+<link rel="stylesheet" href="../index/index.css">
+<link rel="stylesheet" href="./aiassistant.css">
+</head>
+<body>
+<div class="app-container">
+    <!-- Sidebar -->
+    <aside class="sidebar">
+        <div class="logo">
+            <a href="../../index.html">
+                <picture>
+                    <source media="(max-width: 900px)" srcset="../../assets/img/logo_vertical.png">
+                    <img src="../../assets/img/logo_horizontal.png" alt="AURA Logo" class="aura-logo" style="max-width: 100%; height: auto;">
+                </picture>
+            </a>
+        </div>
+
+        <nav class="sidebar-menu">
+            <a href="../../index.html" class="menu-item">Mi Aura</a>
+            <a href="../symptoms/symptoms.html" class="menu-item">Síntomas</a>
+            <a href="../prediction/prediction.html" class="menu-item">Predicción</a>
+            <a href="../aIAssistant/aiassistant.html" class="menu-item active">Asistente IA</a>
+            <a href="../Team/team.html" class="menu-item">Quiénes Somos</a>
+        </nav>
+
+        <button class="btn-cerrar-sesión">Cerrar Sesión</button>
+    </aside>
+
+    <main class="main-content">
+      <header class="dashboard-header ai-header">
+          <h1>Asistente AURA</h1>
+          <div class="user-profile">
+               <div class="avatar" id="user-avatar" style="cursor: pointer;">
+                   <img src="https://ui-avatars.com/api/?name=User&background=83133F&color=fff" alt="Avatar">
+               </div>
+               <div id="profileDropdown" style="display: none; position: absolute; top: 65px; right: 0; background: white; border-radius: 12px; box-shadow: 0 8px 25px rgba(131, 19, 63, 0.15); width: 200px; padding: 0.5rem 0; z-index: 100; border: 1px solid rgba(0,0,0,0.05);">
+                   <a href="#" class="dropdown-item" style="display: block; padding: 0.8rem 1.5rem; color: #111827; text-decoration: none; font-weight: 600; transition: background 0.2s;">Avatar</a>
+                   <a href="#" class="dropdown-item" style="display: block; padding: 0.8rem 1.5rem; color: #111827; text-decoration: none; font-weight: 600; transition: background 0.2s;">Ajustes</a>
+                   <hr style="margin: 0.5rem 0; border: 0; border-top: 1px solid #f1f1f1;">
+                   <a href="#" id="dropdown-logout" class="dropdown-item" style="display: block; padding: 0.8rem 1.5rem; color: #B4295D; text-decoration: none; font-weight: 700; transition: background 0.2s;">Cerrar Sesión</a>
+               </div>
+          </div>
+      </header>
+
+      <div class="main">
+  <!-- LEFT: CHAT -->
+  <div class="chat-panel">
+    <div class="chat-header">
+      <div class="chat-header-avatar">🌸</div>
+      <div class="chat-header-info">
+        <div class="chat-header-name">Aurora – Asistente AURA</div>
+        <div class="chat-header-status"><span class="online-dot"></span>En línea</div>
+      </div>
+    </div>
+
+    <div class="chat-messages" id="chatMessages"></div>
+
+    <div class="typing-indicator" id="typingIndicator" style="padding:0 16px 8px;">
+      <div class="typing-bubble">
+        <div class="dot"></div><div class="dot"></div><div class="dot"></div>
+      </div>
+    </div>
+
+    <div class="suggestions" id="suggestions">
+      <button class="sugg-btn" onclick="sendSuggestion('¿Qué fase del ciclo tengo hoy?')">🌙 Mi fase actual</button>
+      <button class="sugg-btn" onclick="sendSuggestion('Dame tips para esta fase del ciclo')">💡 Tips para hoy</button>
+      <button class="sugg-btn" onclick="sendSuggestion('¿Qué ejercicios me recomiendas para esta fase?')">🏃 Ejercicios</button>
+      <button class="sugg-btn" onclick="sendSuggestion('¿Qué alimentos debo comer esta semana?')">🥗 Nutrición</button>
+      <button class="sugg-btn" onclick="sendSuggestion('Tengo cólicos fuertes, ¿qué puedo hacer?')">😣 Cólicos</button>
+      <button class="sugg-btn" onclick="sendSuggestion('¿Cómo manejar el síndrome premenstrual?')">🌊 SPM</button>
+    </div>
+
+    <div class="chat-input-bar">
+      <textarea class="chat-textarea" id="chatInput"
+        placeholder="Escríbele a Aurora…"
+        rows="1"
+        onkeydown="handleKey(event)"
+        oninput="autoResize(this)"></textarea>
+      <button class="send-btn" onclick="sendMessage()">
+        <svg viewBox="0 0 24 24"><path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/></svg>
+      </button>
+    </div>
+  </div>
+
+  <!-- RIGHT: DASHBOARD -->
+  <div class="dashboard">
+    <div class="dash-title">Mi estado hoy</div>
+
+    <div class="status-card">
+      <div class="sc-greeting">Buenos días,</div>
+      <div class="sc-name" id="dashName">Sarah</div>
+      <div><span class="sc-phase" id="dashPhase">Fase Folicular</span></div>
+      <div class="sc-day-row">
+        <div class="sc-cycle-ring">
+          <svg width="64" height="64" viewBox="0 0 64 64">
+            <circle cx="32" cy="32" r="26" fill="none" stroke="rgba(255,255,255,0.2)" stroke-width="5"/>
+            <circle cx="32" cy="32" r="26" fill="none" stroke="rgba(255,255,255,0.85)" stroke-width="5"
+              stroke-dasharray="163.4" stroke-dashoffset="110" stroke-linecap="round" id="cycleArc"/>
+          </svg>
+          <div class="sc-day-num" id="dashDay">12</div>
+        </div>
+        <div class="sc-info">
+          <strong id="dashPhaseName">Fase Folicular</strong><br>
+          Día <span id="dashDayInline">12</span> de tu ciclo<br>
+          <span id="dashPhaseDesc" style="font-size:0.72rem; opacity:.8;">Energía en alza ✨</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="metrics-grid">
+      <div class="metric-card">
+        <h4>Duración promedio</h4>
+        <div class="metric-value">28<span style="font-size:0.9rem">d</span></div>
+        <div class="metric-sub">Últimos 3 ciclos</div>
+      </div>
+      <div class="metric-card">
+        <h4>Próx. período</h4>
+        <div class="metric-value" id="nextPeriod">~16d</div>
+        <div class="metric-sub">Estimado</div>
+      </div>
+    </div>
+
+    <div class="metric-card">
+      <h4>Estado emocional hoy</h4>
+      <div class="mood-dots" id="moodDots">
+        <div class="mood-dot" onclick="setMood(this,'😊')" title="Feliz">😊</div>
+        <div class="mood-dot" onclick="setMood(this,'😌')" title="Tranquila">😌</div>
+        <div class="mood-dot" onclick="setMood(this,'😔')" title="Triste">😔</div>
+        <div class="mood-dot" onclick="setMood(this,'😤')" title="Irritable">😤</div>
+        <div class="mood-dot active" onclick="setMood(this,'✨')" title="Con energía">✨</div>
+      </div>
+    </div>
+
+    <div class="tags-card">
+      <h4>Síntomas de hoy</h4>
+      <div class="tags" id="symptomTags">
+        <div class="tag" onclick="toggleTag(this)">Cólicos</div>
+        <div class="tag active" onclick="toggleTag(this)">Fatiga</div>
+        <div class="tag" onclick="toggleTag(this)">Hinchazón</div>
+        <div class="tag" onclick="toggleTag(this)">Dolor de cabeza</div>
+        <div class="tag" onclick="toggleTag(this)">Náuseas</div>
+        <div class="tag" onclick="toggleTag(this)">Cambios de humor</div>
+        <div class="tag" onclick="toggleTag(this)">Antojos</div>
+        <div class="tag" onclick="toggleTag(this)">Acné</div>
+      </div>
+    </div>
+
+    <div class="flow-card">
+      <h4>Intensidad del flujo</h4>
+      <div class="flow-dots">
+        <div class="flow-item">
+          <div class="flow-dot" data-level="1" onclick="setFlow(this)">L</div>
+          <div class="flow-label">Leve</div>
+        </div>
+        <div class="flow-item">
+          <div class="flow-dot active" data-level="2" onclick="setFlow(this)">M</div>
+          <div class="flow-label">Mod.</div>
+        </div>
+        <div class="flow-item">
+          <div class="flow-dot" data-level="3" onclick="setFlow(this)">F</div>
+          <div class="flow-label">Fuerte</div>
+        </div>
+        <div class="flow-item">
+          <div class="flow-dot" data-level="4" onclick="setFlow(this)">MF</div>
+          <div class="flow-label">Muy F.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="chart-card">
+      <h4>📊 Duración de ciclos (últimos 6 meses)</h4>
+      <div class="bar-chart" id="barChart"></div>
+    </div>
+
+    <div class="chart-card">
+      <h4>📈 Síntomas más frecuentes</h4>
+      <div class="bar-chart" id="symptomChart"></div>
+    </div>
+  </div>
+    </div>
+  </main>
+</div>
+
+<script type="module" src="../../scripts/GlobalUI.js"></script>
+<script type="module" src="./aiassistant.js?v=2"></script>
+</body>
+</html> 

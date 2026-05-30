@@ -1,0 +1,321 @@
+    <!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Síntomas - AURA</title>
+    <link rel="stylesheet" href="../index/index.css">
+    <link rel="stylesheet" href="symptoms.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="logo">
+                <a href="../../index.html">
+                    <picture>
+                        <source media="(max-width: 900px)" srcset="../../assets/img/logo_vertical.png">
+                        <img src="../../assets/img/logo_horizontal.png" alt="AURA Logo" class="aura-logo" style="max-width: 100%; height: auto;">
+                    </picture>
+                </a>
+            </div>
+
+            <nav class="sidebar-menu">
+                <a href="../../index.html" class="menu-item">Mi Aura</a>
+                <a href="../symptoms/symptoms.html" class="menu-item active">Síntomas</a>
+                <a href="../prediction/prediction.html" class="menu-item">Predicción</a>
+                <a href="../aIAssistant/aiassistant.html" class="menu-item">Asistente IA</a>
+                <a href="../Team/team.html" class="menu-item">Quiénes Somos</a>
+            </nav>
+
+            <button class="btn-cerrar-sesión">Cerrar Sesión</button>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <header class="dashboard-header">
+                <h1>¿Cómo te sientes hoy?</h1>
+                <div class="user-profile">
+                    <div class="avatar" id="user-avatar" style="cursor: pointer;">
+                        <img src="https://ui-avatars.com/api/?name=User&background=83133F&color=fff" alt="Avatar">
+                    </div>
+                    <div id="profileDropdown" style="display: none; position: absolute; top: 65px; right: 0; background: white; border-radius: 12px; box-shadow: 0 8px 25px rgba(131, 19, 63, 0.15); width: 200px; padding: 0.5rem 0; z-index: 100; border: 1px solid rgba(0,0,0,0.05);">
+                        <a href="#" class="dropdown-item" style="display: block; padding: 0.8rem 1.5rem; color: #111827; text-decoration: none; font-weight: 600; transition: background 0.2s;">Avatar</a>
+                        <a href="#" class="dropdown-item" style="display: block; padding: 0.8rem 1.5rem; color: #111827; text-decoration: none; font-weight: 600; transition: background 0.2s;">Ajustes</a>
+                        <hr style="margin: 0.5rem 0; border: 0; border-top: 1px solid #f1f1f1;">
+                        <a href="#" id="dropdown-logout" class="dropdown-item" style="display: block; padding: 0.8rem 1.5rem; color: #B4295D; text-decoration: none; font-weight: 700; transition: background 0.2s;">Cerrar Sesión</a>
+                    </div>
+                </div>
+            </header>
+
+            <section class="top-row" style="grid-template-columns: 1fr; margin-top: 2rem;">
+                <div class="card">
+
+                    <!-- ════════════════════════════════════════
+                         SÍNTOMAS AGRUPADOS (mejora #3 y #4)
+                    ════════════════════════════════════════ -->
+                    <h3 class="section-title">Síntomas</h3>
+                    <p class="section-hint">Selecciona todos los que sientas hoy</p>
+
+                    <div class="symptom-groups">
+
+                        <div class="symptom-group">
+                            <div class="symptom-group-label">
+                                <span class="group-icon">🔴</span>
+                                <span>Dolor</span>
+                            </div>
+                            <div class="sintomas-grid">
+                                <button class="pill" data-symptom="Cólicos">Cólicos</button>
+                                <button class="pill" data-symptom="Dolor de cabeza">Dolor de cabeza</button>
+                                <button class="pill" data-symptom="Dolor lumbar">Dolor lumbar</button>
+                                <button class="pill" data-symptom="Sensibilidad">Sensibilidad</button>
+                            </div>
+                        </div>
+
+                        <div class="symptom-group">
+                            <div class="symptom-group-label">
+                                <span class="group-icon">🟡</span>
+                                <span>Digestivos</span>
+                            </div>
+                            <div class="sintomas-grid">
+                                <button class="pill" data-symptom="Náuseas">Náuseas</button>
+                                <button class="pill" data-symptom="Hinchazón">Hinchazón</button>
+                                <button class="pill" data-symptom="Antojos">Antojos</button>
+                            </div>
+                        </div>
+
+                        <div class="symptom-group">
+                            <div class="symptom-group-label">
+                                <span class="group-icon">🟣</span>
+                                <span>Emocionales</span>
+                            </div>
+                            <div class="sintomas-grid">
+                                <button class="pill" data-symptom="Ansiedad">Ansiedad</button>
+                                <button class="pill" data-symptom="Estrés">Estrés</button>
+                                <button class="pill" data-symptom="Irritabilidad">Irritabilidad</button>
+                            </div>
+                        </div>
+
+                        <div class="symptom-group">
+                            <div class="symptom-group-label">
+                                <span class="group-icon">🔵</span>
+                                <span>Energía</span>
+                            </div>
+                            <div class="sintomas-grid">
+                                <button class="pill" data-symptom="Fatiga">Fatiga</button>
+                                <button class="pill" data-symptom="Insomnio">Insomnio</button>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <!-- ════════════════════════════════════════
+                         INTENSIDAD
+                    ════════════════════════════════════════ -->
+                    <div class="section-divider"></div>
+                    <h3 class="section-title">Intensidad</h3>
+                    <p class="section-hint">¿Qué tan intensos se sienten los síntomas?</p>
+
+                    <div class="intensidad">
+                        <button class="circle-btn" data-value="1">1</button>
+                        <button class="circle-btn" data-value="2">2</button>
+                        <button class="circle-btn" data-value="3">3</button>
+                        <button class="circle-btn" data-value="4">4</button>
+                        <button class="circle-btn" data-value="5">5</button>
+                    </div>
+                    <div class="intensity-labels">
+                        <span>Leve</span>
+                        <span>Severo</span>
+                    </div>
+
+                    <!-- ════════════════════════════════════════
+                         ESTADO MENSTRUAL (mejora #2)
+                    ════════════════════════════════════════ -->
+                    <div class="section-divider"></div>
+                    <h3 class="section-title">Estado Menstrual</h3>
+
+                    <div class="binary-question">
+                        <p class="binary-label">¿Actualmente estás menstruando?</p>
+                        <div class="binary-options">
+                            <button class="binary-btn" data-group="menstruating" data-value="yes">Sí</button>
+                            <button class="binary-btn" data-group="menstruating" data-value="no">No</button>
+                        </div>
+                    </div>
+
+                    <!-- Si SÍ menstrúa: flujo menstrual original -->
+                    <div class="collapsible-block" id="block-menstrual">
+                        <div class="sub-section-label">Flujo menstrual</div>
+                        <div class="styled-select-group">
+                            <div class="select-field">
+                                <label for="flow-texture">Textura</label>
+                                <select id="flow-texture" class="styled-select">
+                                    <option value="Líquida">Líquida</option>
+                                    <option value="Espesa">Espesa</option>
+                                    <option value="Con coágulos">Con coágulos</option>
+                                </select>
+                            </div>
+                            <div class="select-field">
+                                <label for="flow-amount">Cantidad</label>
+                                <select id="flow-amount" class="styled-select">
+                                    <option value="Ligera">Ligera</option>
+                                    <option value="Moderada">Moderada</option>
+                                    <option value="Pesada">Pesada</option>
+                                </select>
+                            </div>
+                            <div class="select-field">
+                                <label for="flow-odor-menstrual">Olor</label>
+                                <select id="flow-odor-menstrual" class="styled-select">
+                                    <option value="Sin olor">Sin olor</option>
+                                    <option value="Leve">Leve</option>
+                                    <option value="Fuerte">Fuerte</option>
+                                    <option value="Muy fuerte">Muy fuerte</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Si NO menstrúa: características del flujo vaginal -->
+                    <div class="collapsible-block" id="block-vaginal">
+                        <div class="sub-section-label">Características del flujo vaginal</div>
+                        <div class="styled-select-group">
+                            <div class="select-field">
+                                <label for="vag-color">Color</label>
+                                <select id="vag-color" class="styled-select">
+                                    <option value="Transparente">Transparente</option>
+                                    <option value="Blanco">Blanco</option>
+                                    <option value="Amarillo">Amarillo</option>
+                                    <option value="Verde">Verde</option>
+                                    <option value="Marrón">Marrón</option>
+                                    <option value="Gris">Gris</option>
+                                </select>
+                            </div>
+                            <div class="select-field">
+                                <label for="vag-thickness">Espesor</label>
+                                <select id="vag-thickness" class="styled-select">
+                                    <option value="Líquido">Líquido</option>
+                                    <option value="Normal">Normal</option>
+                                    <option value="Espeso">Espeso</option>
+                                    <option value="Muy espeso">Muy espeso</option>
+                                </select>
+                            </div>
+                            <div class="select-field">
+                                <label for="vag-odor">Olor</label>
+                                <select id="vag-odor" class="styled-select">
+                                    <option value="Sin olor">Sin olor</option>
+                                    <option value="Leve">Leve</option>
+                                    <option value="Fuerte">Fuerte</option>
+                                    <option value="Muy fuerte">Muy fuerte</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- ════════════════════════════════════════
+                         ACTIVIDAD SEXUAL (mejora #1)
+                    ════════════════════════════════════════ -->
+                    <div class="section-divider"></div>
+                    <h3 class="section-title">Actividad Sexual</h3>
+
+                    <div class="binary-question">
+                        <p class="binary-label">¿Tuviste relaciones sexuales recientemente?</p>
+                        <div class="binary-options">
+                            <button class="binary-btn" data-group="sexual" data-value="yes">Sí</button>
+                            <button class="binary-btn" data-group="sexual" data-value="no">No</button>
+                        </div>
+                    </div>
+
+                    <!-- Detalle actividad sexual: solo visible si respondió Sí -->
+                    <div class="collapsible-block" id="block-sexual">
+                        <div class="sub-section-label">Detalles</div>
+                        <div class="checkbox-group">
+                            <label class="checkbox-label">
+                                <input type="checkbox" id="sex-protection" checked>
+                                <span>¿Usaste protección?</span>
+                            </label>
+                            <label class="checkbox-label">
+                                <input type="checkbox" id="sex-orgasm">
+                                <span>¿Tuviste orgasmo?</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- ════════════════════════════════════════
+                         RESUMEN PRE-GUARDADO (mejora #5)
+                    ════════════════════════════════════════ -->
+                    <div id="summary-preview" class="summary-preview" style="display: none;">
+                        <h4 class="summary-title">🌸 Resumen de tu registro</h4>
+
+                        <div class="summary-row">
+                            <span class="summary-label">Síntomas</span>
+                            <div id="sum-symptoms" class="summary-pills-row">
+                                <span class="summary-empty">Ninguno seleccionado</span>
+                            </div>
+                        </div>
+
+                        <div class="summary-row">
+                            <span class="summary-label">Intensidad</span>
+                            <span class="summary-value" id="sum-intensity">—</span>
+                        </div>
+
+                        <div class="summary-row">
+                            <span class="summary-label">Menstruando</span>
+                            <span class="summary-value" id="sum-menstruating">—</span>
+                        </div>
+
+                        <div class="summary-row" id="sum-flow-row" style="display: none;">
+                            <span class="summary-label">Flujo menstrual</span>
+                            <span class="summary-value" id="sum-flow">—</span>
+                        </div>
+
+                        <div class="summary-row" id="sum-vaginal-row" style="display: none;">
+                            <span class="summary-label">Flujo vaginal</span>
+                            <span class="summary-value" id="sum-vaginal">—</span>
+                        </div>
+
+                        <div class="summary-row">
+                            <span class="summary-label">Actividad sexual</span>
+                            <span class="summary-value" id="sum-sexual">—</span>
+                        </div>
+
+                        <div class="summary-row" id="sum-sexual-detail-row" style="display: none;">
+                            <span class="summary-label">Detalles</span>
+                            <span class="summary-value" id="sum-sexual-detail">—</span>
+                        </div>
+                    </div>
+
+                    <!-- Botón guardar -->
+                    <div class="action-footer" style="margin-top: 2rem;">
+                        <button class="btn-primary" id="btn-guardar" style="width: 100%; padding: 1rem; font-size: 1.1rem; font-weight: bold;">
+                            Guardar Registro Diario
+                        </button>
+                    </div>
+
+                </div>
+            </section>
+        </main>
+
+        <!-- Footer -->
+        <footer class="footer" style="display: flex; justify-content: space-between; align-items: stretch; padding: 2rem 4rem;">
+            <div class="footer-contacts" style="flex: 1; display: flex; flex-direction: column; justify-content: center; border-right: 1px solid rgba(255, 255, 255, 0.4); padding-right: 2rem; margin: 0; min-width: auto; height: auto;">
+                <h4 style="margin-bottom: 0.8rem;">Contactos</h4>
+                <p style="margin-bottom: 0.2rem;">Andres Espinosa Rojas</p>
+                <p style="margin-bottom: 0.2rem;">Alirio Andres Piña</p>
+                <p style="margin-bottom: 0.2rem;">Valentina Corredor</p>
+                <p style="margin-bottom: 0.2rem;">Laura Taborda</p>
+                <p style="margin-bottom: 0.2rem;">Juliana Patiño</p>
+            </div>
+            <div class="footer-cesde" style="flex: 1; display: flex; justify-content: center; align-items: center; padding: 0 2rem; margin: 0;">
+                <img src="../../assets/img/logo_cesde_blanco.png" alt="Logo CESDE" style="max-height: 90px; width: auto; opacity: 1;">
+            </div>
+            <div class="footer-schedule" style="flex: 1; display: flex; flex-direction: column; justify-content: center; text-align: right; border-left: 1px solid rgba(255, 255, 255, 0.4); padding-left: 2rem; margin: 0;">
+                <h3 style="margin-bottom: 0.5rem; font-family: 'Cornella', serif; font-size: 2rem; letter-spacing: 2px;">CESDE</h3>
+                <p style="font-weight: 700; font-size: 1.1rem; margin-bottom: 0.2rem;">Sábado</p>
+                <p style="opacity: 0.9;">7:30 a 6:00 pm</p>
+            </div>
+        </footer>
+    </div>
+
+    <script type="module" src="../../scripts/GlobalUI.js"></script>
+    <script type="module" src="symptoms.js"></script>
+</body>
+</html>

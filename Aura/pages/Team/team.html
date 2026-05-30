@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiénes Somos - AURA</title>
+    <!-- Estilos compartidos -->
+    <link rel="stylesheet" href="../index/index.css">
+    <link rel="stylesheet" href="team.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="logo">
+                <a href="../../index.html">
+                    <picture>
+                        <source media="(max-width: 900px)" srcset="../../assets/img/logo_vertical.png">
+                        <img src="../../assets/img/logo_horizontal.png" alt="AURA Logo" class="aura-logo" style="max-width: 100%; height: auto;">
+                    </picture>
+                </a>
+            </div>
+            
+            <nav class="sidebar-menu">
+                <a href="../../index.html" class="menu-item">Mi Aura</a>
+                <a href="../symptoms/symptoms.html" class="menu-item">Síntomas</a>
+                <a href="../prediction/prediction.html" class="menu-item">Predicción</a>
+                <a href="../aIAssistant/aiassistant.html" class="menu-item">Asistente IA</a>
+                <a href="../Team/team.html" class="menu-item active">Quiénes Somos</a>
+            </nav>
+
+            <button class="btn-cerrar-sesión">Cerrar Sesión</button>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <header class="dashboard-header">
+                <h1 style="font-family: 'Cornella', serif;">Quiénes Somos</h1>
+                <div class="user-profile">
+                    <div class="avatar" id="user-avatar" style="cursor: pointer;">
+                        <img src="https://ui-avatars.com/api/?name=User&background=83133F&color=fff" alt="Avatar">
+                    </div>
+                    <div id="profileDropdown" style="display: none; position: absolute; top: 65px; right: 0; background: white; border-radius: 12px; box-shadow: 0 8px 25px rgba(131, 19, 63, 0.15); width: 200px; padding: 0.5rem 0; z-index: 100; border: 1px solid rgba(0,0,0,0.05);">
+                        <a href="#" class="dropdown-item" style="display: block; padding: 0.8rem 1.5rem; color: #111827; text-decoration: none; font-weight: 600; transition: background 0.2s;">Avatar</a>
+                        <a href="#" class="dropdown-item" style="display: block; padding: 0.8rem 1.5rem; color: #111827; text-decoration: none; font-weight: 600; transition: background 0.2s;">Ajustes</a>
+                        <hr style="margin: 0.5rem 0; border: 0; border-top: 1px solid #f1f1f1;">
+                        <a href="#" id="dropdown-logout" class="dropdown-item" style="display: block; padding: 0.8rem 1.5rem; color: #B4295D; text-decoration: none; font-weight: 700; transition: background 0.2s;">Cerrar Sesión</a>
+                    </div>
+                </div>
+            </header>
+
+            <!-- Hero Section -->
+            <section class="team-hero">
+                <div class="hero-content">
+                    <span class="section-tag">NUESTRA HISTORIA</span>
+                    <h2>Pasión por el bienestar femenino</h2>
+                    <p>AURA nació de la necesidad de transformar la forma en que las mujeres interactúan con su salud menstrual. Somos un equipo apasionado de estudiantes del CESDE dedicados a integrar tecnología y empatía.</p>
+                </div>
+            </section>
+
+            <!-- Misión / Visión -->
+            <section class="values-row">
+                <div class="card value-card">
+                    <div class="value-icon">
+                        <svg width="45" height="45" viewBox="0 0 24 24" fill="none" stroke="#83133F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><circle cx="12" cy="12" r="6"></circle><circle cx="12" cy="12" r="2"></circle></svg>
+                    </div>
+                    <h3>Misión</h3>
+                    <p>Empoderar a las mujeres con herramientas inteligentes para el autoconocimiento.</p>
+                </div>
+                <div class="card value-card">
+                    <div class="value-icon">
+                        <svg width="45" height="45" viewBox="0 0 24 24" fill="none" stroke="#83133F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                    </div>
+                    <h3>Visión</h3>
+                    <p>Ser la plataforma líder en bienestar menstrual en Latinoamérica para el 2026.</p>
+                </div>
+                <div class="card value-card">
+                    <div class="value-icon">
+                        <svg width="45" height="45" viewBox="0 0 24 24" fill="none" stroke="#83133F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"></path><path d="M12 11l1 2h-2z" fill="#83133F"></path></svg>
+                    </div>
+                    <h3>Empatía</h3>
+                    <p>Ponemos el cuidado humano en el centro de cada línea de código que escribimos.</p>
+                </div>
+            </section>
+
+            <!-- Grid de Creadores -->
+            <section class="team-grid-section">
+                <h3 class="grid-title">El Equipo Detrás de AURA</h3>
+                <div class="team-grid">
+                    <!-- Andrés -->
+                    <article class="card team-member-card">
+                        <div class="member-photo">
+                            <div class="photo-placeholder">AE</div>
+                            <span class="role-badge">Scrum Master</span>
+                        </div>
+                        <div class="member-info">
+                            <h4>Andrés Felipe Espinosa Rojas</h4>
+                            <p class="role">Scrum Master · Diseño Visual</p>
+                            <p class="desc">Define el diseño visual, revisa la coherencia del producto y lidera el seguimiento diario del equipo.</p>
+                            <div class="member-tags">
+                                <span class="tag">Diseño</span>
+                                <span class="tag">Liderazgo</span>
+                                <span class="tag">Scrum</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Juana -->
+                    <article class="card team-member-card">
+                        <div class="member-photo">
+                            <div class="photo-placeholder">JC</div>
+                            <span class="role-badge">Product Owner</span>
+                        </div>
+                        <div class="member-info">
+                            <h4>Juana Valentina Corredor García</h4>
+                            <p class="role">Product Owner · Lógica de Negocio</p>
+                            <p class="desc">Dueña de la lógica del negocio, prioriza funcionalidades y define cómo deben comportarse las reglas del sistema.</p>
+                            <div class="member-tags">
+                                <span class="tag">Producto</span>
+                                <span class="tag">Estrategia</span>
+                                <span class="tag">Reglas</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Juliana -->
+                    <article class="card team-member-card">
+                        <div class="member-photo">
+                            <div class="photo-placeholder">JP</div>
+                            <span class="role-badge">Desarrolladora</span>
+                        </div>
+                        <div class="member-info">
+                            <h4>Juliana Patiño López</h4>
+                            <p class="role">Equipo de Desarrollo</p>
+                            <p class="desc">Implementa clases, apoya en métodos y realiza pruebas unitarias para garantizar la calidad del código.</p>
+                            <div class="member-tags">
+                                <span class="tag">Backend</span>
+                                <span class="tag">Testing</span>
+                                <span class="tag">Código</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Laura -->
+                    <article class="card team-member-card">
+                        <div class="member-photo">
+                            <div class="photo-placeholder">LT</div>
+                            <span class="role-badge">UX · Frontend</span>
+                        </div>
+                        <div class="member-info">
+                            <h4>Laura Taborda Ramírez</h4>
+                            <p class="role">Vistas · Experiencia de Usuario</p>
+                            <p class="desc">Crea las vistas, conecta con la lógica y es quien hace que el proyecto se sienta real para las usuarias.</p>
+                            <div class="member-tags">
+                                <span class="tag">Frontend</span>
+                                <span class="tag">UX</span>
+                                <span class="tag">Vistas</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Alirio -->
+                    <article class="card team-member-card">
+                        <div class="member-photo">
+                            <div class="photo-placeholder">AP</div>
+                            <span class="role-badge">Integrador</span>
+                        </div>
+                        <div class="member-info">
+                            <h4>Alirio Andrés Piña Sosa</h4>
+                            <p class="role">Desarrollo · Integración</p>
+                            <p class="desc">Conecta todas las piezas del proyecto, arregla bugs y apoya al equipo donde haya bloqueos.</p>
+                            <div class="member-tags">
+                                <span class="tag">Integración</span>
+                                <span class="tag">Bugs</span>
+                                <span class="tag">Full Stack</span>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+            </section>
+        </main>
+
+        <!-- Footer -->
+        <footer class="footer" style="display: flex; justify-content: space-between; align-items: stretch; padding: 2rem 4rem;">
+             <!-- Columna Izquierda (Contactos) -->
+             <div class="footer-contacts" style="flex: 1; display: flex; flex-direction: column; justify-content: center; border-right: 1px solid rgba(255, 255, 255, 0.4); padding-right: 2rem; margin: 0; min-width: auto; height: auto;">
+                 <h4 style="margin-bottom: 0.8rem;">Contactos</h4>
+                 <p style="margin-bottom: 0.2rem;">Andres Espinosa Rojas</p>
+                 <p style="margin-bottom: 0.2rem;">Alirio Andres Piña</p>
+                 <p style="margin-bottom: 0.2rem;">Valentina Corredor</p>
+                 <p style="margin-bottom: 0.2rem;">Laura Taborda</p>
+                 <p style="margin-bottom: 0.2rem;">Juliana Patiño</p>
+             </div>
+
+             <!-- Columna Central (Logo) -->
+             <div class="footer-cesde" style="flex: 1; display: flex; justify-content: center; align-items: center; padding: 0 2rem; margin: 0;">
+                 <img src="../../assets/img/logo_cesde_blanco.png" alt="Logo CESDE" style="max-height: 90px; width: auto; opacity: 1;">
+             </div>
+
+             <!-- Columna Derecha (Horario) -->
+             <div class="footer-schedule" style="flex: 1; display: flex; flex-direction: column; justify-content: center; text-align: right; border-left: 1px solid rgba(255, 255, 255, 0.4); padding-left: 2rem; margin: 0;">
+                  <h3 style="margin-bottom: 0.5rem; font-family: 'Cornella', serif; font-size: 2rem; letter-spacing: 2px;">CESDE</h3>
+                  <p style="font-weight: 700; font-size: 1.1rem; margin-bottom: 0.2rem;">Sábado</p>
+                  <p style="opacity: 0.9;">7:30 a 6:00 pm</p>
+             </div>
+        </footer>
+    </div>
+
+    <script type="module" src="../../scripts/GlobalUI.js"></script>
+    <script type="module" src="team.js"></script>
+</body>
+</html>

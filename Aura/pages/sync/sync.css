@@ -1,0 +1,102 @@
+/* 1. IMPORTACIÓN DE VARIABLES Y FUENTES (Esencial para que funcione el resto) */
+:root {
+    --primary-color: #83133F;
+    --primary-light: #B4295D;
+    --bg-light: #F9E4F0;
+    --card-bg: #F2C4CB;
+    --button-bg: #D12260;
+    --text-dark: #111827;
+    --text-light: #ffffff;
+    --sub-text: #B4295D;
+}
+
+/* 2. ESTILOS BASE */
+body {
+    font-family: 'Nunito', sans-serif;
+    background-color: var(--bg-light); /* Cambio de oscuro a rosa claro */
+    color: var(--text-dark);
+    padding: 2.5rem;
+    margin: 0;
+    line-height: 1.6;
+}
+
+/* 3. TIPOGRAFÍA ELEGANTE (Cornella) */
+h1 {
+    font-family: 'Cornella', serif;
+    color: var(--text-dark);
+    font-size: 3.2rem;
+    margin-bottom: 1rem;
+}
+
+h2 {
+    font-family: 'Cornella', serif;
+    color: var(--primary-color); /* Maroon para sub-títulos */
+    font-size: 2.2rem;
+    margin-top: 0;
+}
+
+/* 4. TARJETAS CON ESTILO AURA */
+.card {
+    background-color: var(--card-bg);
+    padding: 1.8rem;
+    border-radius: 20px; /* Bordes más redondeados */
+    margin-bottom: 1.5rem;
+    box-shadow: 0 15px 35px rgba(209, 34, 96, 0.15), 0 5px 15px rgba(0, 0, 0, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 20px 40px rgba(209, 34, 96, 0.2);
+}
+
+/* 5. FORMULARIOS Y BOTONES REFINADOS */
+label {
+    display: block;
+    margin: 0.8rem 0 0.4rem;
+    cursor: pointer;
+    font-weight: 700;
+    color: var(--primary-color);
+    font-size: 0.95rem;
+}
+
+input[type="text"] {
+    padding: 0.75rem 1rem;
+    border-radius: 8px;
+    border: 2px solid rgba(131, 19, 63, 0.1); /* Borde sutil maroon */
+    background: white;
+    color: var(--text-dark);
+    margin-right: 0.5rem;
+    width: 100%;
+    max-width: 300px;
+    font-family: 'Nunito', sans-serif;
+    transition: border-color 0.3s;
+}
+
+input[type="text"]:focus {
+    outline: none;
+    border-color: var(--button-bg);
+}
+
+button {
+    padding: 0.8rem 2rem;
+    background-color: var(--button-bg);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    margin-top: 1rem;
+    font-size: 1rem;
+    font-weight: 700;
+    transition: background 0.3s, transform 0.2s, opacity 0.3s;
+}
+
+button:hover {
+    opacity: 0.9;
+    transform: scale(1.02);
+}
+
+button:active {
+    transform: scale(0.98);
+}
